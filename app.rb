@@ -5,6 +5,11 @@ class App < Sinatra::Base
     haml :index
   end
 
+  get "/images/:id" do
+    @image = Image[params[:id]]
+    haml :show
+  end
+
   post "/images" do
     @image = Image.new params[:image]
     @image.save
