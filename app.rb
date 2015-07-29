@@ -10,6 +10,11 @@ class App < Sinatra::Base
     haml :show
   end
 
+  get "/auth" do
+    protected!
+    redirect "/"
+  end
+
   post "/images" do
     protected!
     @image = Image.new params[:image]
